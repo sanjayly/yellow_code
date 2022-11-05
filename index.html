@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpiltPay</title>
+    <script src="my_scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+      /* CSS comes here */
+      body {
+        padding: 20px;
+      }
+      input {
+        padding: 5px;
+        background-color: transparent;
+        border: none;
+        border-bottom: solid 4px orangered;
+        width: 250px;
+        font-size: 16px;
+      }
+
+      .qr-btn {
+        background-color: orangered;
+        padding: 8px;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="containe" class="container">
+      <div class="nav_bar">
+        <div class="nav-left">
+          <h1 class="welcome">Welcome to SpiltPay</h1>
+        </div>
+        <div class="nav-rigth">
+          <a href="../register.html" class="right-join" id="join">Join</a>
+        </div>
+      </div>
+      <input type="number" id="amountbtn" placeholder="enter the amount" />
+      <!-- <button id="amount-btn" class="submit">Click here</button> -->
+      <br />
+      <br />
+      <input type="number" id="nobtn" placeholder="number of people" />
+      <!--   -->
+    </div>
+    <!-- <div class="code">
+      <section class="heading">
+        <div class="title">QRcodes</div>
+        <div class="sub-title">Generate QRCode for payment</div>
+      </section>
+      <section class="user-input">
+        <label for="input_text">Type something...</label>
+        <input
+          type="text"
+          name="input_text"
+          id="input_text"
+          autocomplete="off"
+        />
+        <button class="button" type="submit">Generate QR Code</button>
+      </section>
+      <div class="qr-code" style="display: none"></div>
+      <script src="app.js"></script>
+    </div> -->
+    <div class="code">
+      <br />
+      <br />
+      <button id="pay_amount" onclick="amount()">Payment Amount</button>
+      <h3>QR Code Generator</h3>
+      <div>
+        <input id="qr-text" type="number" placeholder="Gereted amount" />
+      </div>
+      <br />
+      <div>
+        <button class="qr-btn" onclick="generateQRCode()">
+          Create QR Code
+        </button>
+      </div>
+      <br />
+      <p id="qr-result">This is deault QR code:</p>
+      <canvas id="qr-code"></canvas>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+      <script>
+        /* JS comes here */
+        var qr;
+        (function () {
+          qr = new QRious({
+            element: document.getElementById("qr-code"),
+            size: 200,
+            value: "https://studytonight.com",
+          });
+        })();
+
+        function generateQRCode() {
+          var qrtext = document.getElementById("qr-text").value;
+          document.getElementById("qr-result").innerHTML =
+            "QR code for " + qrtext + ":";
+          alert(qrtext);
+          qr.set({
+            foreground: "black",
+            size: 200,
+            value: qrtext,
+          });
+        }
+
+        function amount() {
+          console.log("jdjeyx ");
+          var amountbtn = parseFloat(
+            document.getElementById("amountbtn").value
+          );
+          var nobtn = parseFloat(document.getElementById("nobtn").value);
+          // if (clicked_id == "pay_amount") {
+          console.log(amountbtn);
+          console.log("jdjeyx ");
+
+          document.getElementById("qr-text").value = amountbtn / nobtn;
+          // } else {
+          //   alert("enter amount");
+          //}
+        }
+      </script>
+    </div>
+  </body>
+</html>
